@@ -9,6 +9,7 @@
                 <div class="card-header">{{$post->title}}</div>
                 <div class="card-body">
                     {{Str::limit(strip_tags($post->content),50)}}
+                <a href="/post/{{$post->id}}" class="btn btn-link">Read More...</a>
                 </div>
             </div>
             <br>
