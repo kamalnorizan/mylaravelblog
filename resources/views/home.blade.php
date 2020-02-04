@@ -4,18 +4,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @foreach ($posts as $post)
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
+                <div class="card-header">{{$post->title}}</div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-a
-
+                    {{Str::limit(strip_tags($post->content),50)}}
                 </div>
+            </div>
+            <br>
+            @endforeach
+            <div class="d-flex justify-content-center">
+                {{$posts->links()}}
             </div>
         </div>
     </div>
