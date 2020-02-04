@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     //RelHas <- Tab trigger
-    public function relposts()
+    public function posts()
     {
         return $this->hasMany('App\Post', 'user_id', 'id');
     }

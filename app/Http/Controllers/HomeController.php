@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 // use App\Post;
 class HomeController extends Controller
 {
@@ -24,11 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::where('id','<=',30)->get();
-        $user = User::find(2);
-        //test push
-        // $post = Post::all();
-        return response()->json($user->relposts);
-        // return view('home');
+        $posts = Post::paginate(10);
+        return view('home',compact('posts'));
     }
 }
