@@ -13,19 +13,18 @@
 
     <link href="{{asset('bower_component/css/animate.css') }}" rel="stylesheet">
     <link href="{{asset('bower_component/css/style.css') }}" rel="stylesheet">
-
+    @yield('head')
 </head>
 
 <body class="">
-
     <div id="wrapper">
-
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                                <img alt="image" class="img-circle" src="{{asset('bower_component/img/profile_small.jpg')}}" />
+                                <img alt="image" class="img-circle"
+                                    src="{{asset('bower_component/img/profile_small.jpg')}}" />
                             </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David
@@ -37,12 +36,13 @@
                                 <li><a href="contacts.html">Contacts</a></li>
                                 <li><a href="mailbox.html">Mailbox</a></li>
                                 <li class="divider"></li>
-                                <li><a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>
-                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
                                         @csrf
-                                    </form></li>
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                         <div class="logo-element">
@@ -172,12 +172,11 @@
                             </ul>
                         </li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+                            @csrf
+                        </form>
 
                         <li>
-                            <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 <i class="fa fa-sign-out"></i> Log out
                             </a>
@@ -188,19 +187,11 @@
             </div>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-sm-4">
-                    <h2>This is main title</h2>
-                    <ol class="breadcrumb">
-                        <li>
-                            <a href="index.html">This is</a>
-                        </li>
-                        <li class="active">
-                            <strong>Breadcrumb</strong>
-                        </li>
-                    </ol>
+                    <h2>@yield('maintitle')</h2>
                 </div>
                 <div class="col-sm-8">
                     <div class="title-action">
-                        <a href="" class="btn btn-primary">This is action area</a>
+                        @yield('actionbutton')
                     </div>
                 </div>
             </div>
@@ -230,7 +221,7 @@
     <script src="{{asset('bower_component/js/inspinia.js')}}"></script>
     <script src="{{asset('bower_component/js/plugins/pace/pace.min.js')}}"></script>
 
-
+    @yield('script')
 </body>
 
 </html>
