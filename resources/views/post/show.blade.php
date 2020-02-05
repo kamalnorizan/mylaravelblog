@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <p>Author: {{$post->user->name}}</p>
-                   <p>{{$post->content}}</p>
+                    <p>{{$post->content}}</p>
                 </div>
             </div>
             <br>
@@ -18,8 +18,12 @@
 
                 <div class="card-body">
                     @foreach ($post->comments as $comment)
-                    <p>{{$comment->user->name}}<br> <small>{{\Carbon\Carbon::parse($comment->created_at)->format('d-m-Y')}}</small></p>
-
+                    <p>{{$comment->user->name}}<br>
+                        <small>{{\Carbon\Carbon::parse($comment->created_at)->format('d-m-Y')}}</small>
+                        <br>
+                        {{$comment->comment}}
+                    </p>
+                    <hr>
                     @endforeach
                 </div>
             </div>
@@ -27,4 +31,3 @@
     </div>
 </div>
 @endsection
-

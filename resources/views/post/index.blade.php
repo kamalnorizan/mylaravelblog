@@ -41,7 +41,7 @@
                                 {{$post->user->name}}
                             </td>
                             <td>
-
+                                <a href="/post/{{$post->id}}" class="btn btn-primary btn-sm">Show</a>
                             </td>
                         </tr>
                         @endforeach
