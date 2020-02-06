@@ -7,7 +7,7 @@
 @section('maintitle','Posts')
 
 @section('actionbutton')
-
+<a class="btn btn-primary btn-sm" data-toggle="modal" href='#create_modal'>Create Post</a>
 @endsection
 
 @section('content')
@@ -63,6 +63,47 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="create_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Create New Post</h4>
+            </div>
+            {!! Form::open(['method' => 'POST', 'route' => 'post.store']) !!}
+            <div class="modal-body">
+                {!! Form::hidden('user_id', Auth::user()->id) !!}
+
+                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                    {{-- {!! Form::label('title', 'Title') !!} --}}
+                    {!! Form::text('title', null, ['class' => 'form-control', 'required' => 'required', 'id'=>'mytitleid', 'placeholder'=>'Sila masukkan tajuk post','disabled']) !!}
+                    <small class="text-danger">{{ $errors->first('title') }}</small>
+                </div>
+                <div class="form-group{{ $errors->has('publish_at') ? ' has-error' : '' }}">
+                    {!! Form::label('publish_at', 'Publish Date') !!}
+                    {!! Form::date('publish_at',date('Y-m-d'), ['class' => 'form-control', 'required' => 'required'])
+                    !!}
+                    <small class="text-danger">{{ $errors->first('publish_at') }}</small>
+                </div>
+                <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                    {!! Form::label('content', 'Content') !!}
+                    {!! Form::textarea('content', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                    <small class="text-danger">{{ $errors->first('content') }}</small>
+                </div>
+            </div>
+            <div class="modal-footer">
+                {{-- <div class="text-center"> --}}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                {{-- </div> --}}
+            </div>
+            {!! Form::close() !!}
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('script')

@@ -52,6 +52,9 @@
                     <li>
                         <a href="/home"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
                     </li>
+                    <li>
+                        <a href="/post"><i class="fa fa-edit"></i> <span class="nav-label">Posts</span></a>
+                    </li>
                 </ul>
 
             </div>
@@ -197,6 +200,11 @@
             </div>
 
             <div class="wrapper wrapper-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        @include('flash::message')
+                    </div>
+                </div>
                 @yield('content')
             </div>
             <div class="footer">
@@ -220,6 +228,9 @@
     <!-- Custom and plugin javascript -->
     <script src="{{asset('bower_component/js/inspinia.js')}}"></script>
     <script src="{{asset('bower_component/js/plugins/pace/pace.min.js')}}"></script>
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
 
     @yield('script')
 </body>

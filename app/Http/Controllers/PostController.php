@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
-
+use Auth;
 class PostController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user.posts.comments.user','comments.user')->paginate(20);
+        $posts = Post::with('user.posts.comments.user','comments.user')->latest()->paginate(20);
         // $posts = Post::paginate(20);
         // return response()->json($posts);
         return view('post.index',compact('posts'));
@@ -38,7 +38,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->publish_at = $request->publish_at;
+        // $post->content = $request->content;
+        // $post->user_id = Auth::user()->id;
+        // $post->save();
+
+        Post::create($request->all());
+
+        flash('Pos anda berjaya disimpan')->success()->important();
+        return redirect('/post');
     }
 
     /**
