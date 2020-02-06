@@ -15,7 +15,7 @@
 // });
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/hello', 'TestController@index');
