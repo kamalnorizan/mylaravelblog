@@ -23,11 +23,11 @@
                     @include('post._form')
 
                     <div class="btn-group pull-right">
-
                         {!! Form::submit("Update", ['class' => 'btn btn-primary']) !!}
                     </div>
 
                 {!! Form::close() !!}
+                <br>
             </div>
         </div>
     </div>

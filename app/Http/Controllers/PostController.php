@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('user.posts.comments.user','comments.user')->latest()->paginate(20);
+        $posts = Post::with('user')->where('user_id',Auth::user()->id)->latest()->paginate(20);
         // $posts = Post::paginate(20);
         // return response()->json($posts);
         return view('post.index',compact('posts'));
@@ -73,7 +73,6 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
         return view('post.edit',compact('post'));
     }
 
@@ -87,6 +86,9 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         //
+        $post->update($request->all());
+        flash('Kemaskini telah berjaya..wuuhuuu!!')->success()->important();
+        return back();
     }
 
     /**
