@@ -51,8 +51,17 @@
                             {{$post->user->name}}
                         </td>
                         <td>
+                            {{-- <a href="{{route('post.destroy',[$param1,$param2])}}"></a> --}}
+
+                            {!! Form::open(['method' => 'DELETE', 'route' => ['post.destroy',$post->id],'onsubmit'=>'return confirm("Adakah anda pasti untuk memadam post ini?");']) !!}
+                            {{--           button shw & edit                 --}}
                             <a href="/post/{{$post->id}}" class="btn btn-primary btn-sm"><i class="fa fa-eye" alt="Show"></i></a>
+
                             <a href="/post/{{$post->id}}/edit" class="btn btn-warning btn-sm"><i class="fa fa-edit" alt="Edit"></i></a>
+
+                            {{--       button delete (submit form)                 --}}
+                            <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-trash" alt="Delete"></i></button>
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                     @endforeach

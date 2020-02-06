@@ -99,6 +99,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        flash('Post deleted successfully')->error()->important();
+        return back();
     }
 }

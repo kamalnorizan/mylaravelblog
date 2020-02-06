@@ -36,6 +36,9 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         //
+        Comment::create($request->all());
+        flash('Terima kasih kerana memberi komen.')->success()->important();
+        return back();
     }
 
     /**

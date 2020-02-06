@@ -39,6 +39,22 @@
                 </p>
                 <hr>
                 @endforeach
+                {!! Form::open(['method' => 'POST', 'route' => 'comment.store']) !!}
+
+                    <div class="form-group{{ $errors->has('comment') ? ' has-error' : '' }}">
+                        {!! Form::label('comment', 'Create Comment') !!}
+                        {!! Form::textarea('comment', null, ['class' => 'form-control', 'required' => 'required']) !!}
+                        <small class="text-danger">{{ $errors->first('comment') }}</small>
+                    </div>
+                    {!! Form::hidden('post_id', $post->id) !!}
+                    {!! Form::hidden('user_id', Auth::user()->id) !!}
+
+                    <div class="btn-group pull-right">
+                        {!! Form::submit("Comment", ['class' => 'btn btn-success']) !!}
+                    </div>
+
+                {!! Form::close() !!}
+                <br> <br>
             </div>
         </div>
     </div>

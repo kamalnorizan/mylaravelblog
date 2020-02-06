@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::get('/hello', 'TestController@index');
 
 Auth::routes();
-
 Route::resource('post', 'PostController');
+Route::resource('comment', 'CommentController')->except(['edit,update']);
 
 Route::get('/home', 'HomeController@index')->name('home');
